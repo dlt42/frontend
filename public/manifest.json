@@ -1,0 +1,9 @@
+{
+  "short_name": "front end task",
+  "name": "front end task",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
