@@ -1,11 +1,13 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 
 import { getCreatorCards } from '../../adapters/creatorCardApiService';
 import { CreatorCards } from '../../domain/creatorCard';
 import { CreatorCardContainer, Header } from '../components';
+import { Search } from '../components/Search';
 
 const HomePage: FC = (): JSX.Element => {
   const [creatorCards, setCreatorCards] = useState<CreatorCards | null>(null);
+  const [filteredCards, setFilteredCards] = useState<CreatorCards | null>(null);
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     const request = async () => {
@@ -18,15 +20,31 @@ const HomePage: FC = (): JSX.Element => {
     };
     request();
   }, [setCreatorCards, setError]);
+  const onSearchChange = useCallback(
+    (value: string) => {
+      if (creatorCards) {
+        setFilteredCards(
+          creatorCards?.filter(
+            (currentCard) =>
+              currentCard.name.toLowerCase().indexOf(value.toLowerCase()) > -1
+          )
+        );
+      }
+    },
+    [creatorCards]
+  );
   return (
     <>
-      <Header />
+      <Header>
+        <Search onSearchChange={onSearchChange}></Search>
+      </Header>
+
       <main className='mt-12'>
         <div className='mx-auto w-[90%] max-w-[1280px]'>
           {error !== null ? (
             <div>Error: {error}</div>
           ) : (
-            <CreatorCardContainer creatorCards={creatorCards} />
+            <CreatorCardContainer creatorCards={filteredCards} />
           )}
         </div>
       </main>
