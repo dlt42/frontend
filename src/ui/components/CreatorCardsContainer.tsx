@@ -11,7 +11,6 @@ export const CreatorCardContainer: FC<CreatorCardsContainerProps> = ({
   creatorCards,
 }): JSX.Element => {
   const [showing, setShowing] = useState<string | null>(null);
-
   return (
     <div className='flex flex-col items-center justify-between p-2'>
       {creatorCards === null ? (
@@ -23,14 +22,14 @@ export const CreatorCardContainer: FC<CreatorCardsContainerProps> = ({
               showing === creatorCard.id
                 ? ''
                 : showing === null
-                ? 'show'
-                : 'hide'
+                  ? 'show'
+                  : 'hide'
             }
             key={`${index}-${creatorCard.id}`}
             creatorCard={creatorCard}
             showContent={showing === creatorCard.id}
-            onClick={() => {
-              setShowing(showing !== creatorCard.id ? creatorCard.id : null);
+            onClick={(e) => {
+              setShowing(showing ? null : creatorCard.id);
             }}
           />
         ))

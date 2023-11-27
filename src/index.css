@@ -30,6 +30,7 @@ body {
 }
 
 .header-outer {
+  z-index: 1;
   height: var(--header-outer-height);
   top: calc(var(--header-height-difference) * -1);
 }
@@ -48,57 +49,22 @@ body {
 
 .hide {
   transition:
-    height 1s,
-    padding 1s,
-    visibility 1s,
-    opacity 1s,
-    margin 1s,
-    border-width 1s;
+    scale .5s,
+    opacity 0.5s,
+    visibility .5s;
+  scale: 1 0;
   visibility: hidden;
   opacity: 0;
-  height: 0;
-  padding: 0;
-  border-width: 0;
-  margin: 0;
 
-  img {
-    height: 0px;
-  }
-  h1,
-  h2 {
-    transition:
-      font-size 0.5s,
-      line-heightL 0.5s;
-    font-size: 0;
-    line-height: 0;
-  }
+  img { height: 0; }
 }
 
 .show {
   transition:
-    height 0.5s,
-    padding 0.5s,
-    visibility 0.5s,
+    scale .5s,
     opacity 0.5s,
-    margin 0.5s,
-    border-width 0.5s;
+    visibility .5s;
+  scale: 1 1;
   visibility: visible;
   opacity: 1;
-  height: auto;
-  padding: 1rem;
-  border-width: 0.1rem;
-  margin: 0.75rem;
-
-  img {
-    transition: height 1s;
-    height: calc(var(--header-inner-height) - 10px);
-  }
-  h1,
-  h2 {
-    transition:
-      font-size 1s,
-      line-heightL 1s;
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
 }
