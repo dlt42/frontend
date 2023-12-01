@@ -28,7 +28,7 @@ export const CreatorCardContainer: FC<CreatorCardsContainerProps> = ({
             key={`${index}-${creatorCard.id}`}
             creatorCard={creatorCard}
             showContent={showing === creatorCard.id}
-            onClick={(e) => {
+            onClick={() => {
               setShowing(showing ? null : creatorCard.id);
             }}
           />
