@@ -27,7 +27,7 @@ export const CreatorCard: FC<CreatorCardProps> = ({
     >
       <span>
         <img
-          className='profile-view aspect-square h-14 min-w-[3.5rem] rounded-[1.75rem] border-[.1rem] border-solid border-slate-500 object-cover'
+          className=' aspect-square h-14 min-w-[3.5rem] rounded-[1.75rem] border-[.1rem] border-solid border-slate-500 object-cover breed-image'
           src={`images/${image}`}
         />
       </span>
